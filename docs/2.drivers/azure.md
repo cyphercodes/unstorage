@@ -219,9 +219,9 @@ Store data in a [data-tables]().
 
 This driver stores KV information in a Azure table storage. The same partition key is used for all keys and the field `unstorageValue` is used to store the value.
 
-To use it, you will need to install `@azure/data-table` and `@azure/identity` in your project:
+To use it, you will need to install `@azure/data-tables` and `@azure/identity` in your project:
 
-:pm-install{name="@azure/data-table @azure/identity"}
+:pm-install{name="@azure/data-tables @azure/identity"}
 
 Please make sure that the table you want to use exists in your storage account.
 
@@ -254,4 +254,6 @@ The driver supports the following authentication methods:
 - `tableName`: The name of the table to use. Defaults to `unstorage`.
 - `partitionKey`: The partition key to use. Defaults to `unstorage`.
 - `accountKey`: The account key to use for authentication. This is only required if you are using `AzureNamedKeyCredential`.
--
+- `sasKey`: The SAS key to use for authentication. This is only required if you are using `AzureSASCredential`.
+- `connectionString`: The connection string to use for authentication. Only available in Node.js runtime. Not recommended for production as it exposes your account key in plain text.
+- `pageSize`: The number of entries to retrieve per request. Impacts `getKeys()` and `clear()` performance. Maximum value is 1000. Defaults to `1000`.
